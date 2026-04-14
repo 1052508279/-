@@ -3,88 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>飞盘人格测试 · 冷淡极端版</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <title>飞盘人格测试 · 均衡版</title>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-        body {
-            background: #eef2f0;
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
-            padding: 24px 16px 48px;
-            min-height: 100vh;
-            color: #2c3e2f;
-        }
-        .container { max-width: 680px; margin: 0 auto; }
-        .card {
-            background: #fefcf8;
-            border-radius: 32px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            padding: 28px 24px 36px;
-            border: 1px solid #dadfce;
-        }
-        .hero-icon {
-            background: #6f7c5f;
-            width: 70px;
-            height: 70px;
-            border-radius: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 18px;
-            opacity: 0.8;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { background: #eef2f0; font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif; padding: 24px 16px 48px; min-height: 100vh; color: #2c3e2f; }
+        .container { max-width: 700px; margin: 0 auto; }
+        .card { background: #fefcf8; border-radius: 32px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); padding: 28px 24px 36px; border: 1px solid #dadfce; }
+        .hero-icon { background: #6f7c5f; width: 70px; height: 70px; border-radius: 35px; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; opacity: 0.8; }
         .hero-icon i { font-size: 38px; color: white; }
-        h1 {
-            font-size: 1.9rem;
-            font-weight: 500;
-            text-align: center;
-            color: #4a5b3e;
-            letter-spacing: -0.5px;
-            margin-bottom: 12px;
-        }
-        .sub {
-            text-align: center;
-            color: #8f9b82;
-            font-weight: 400;
-            margin-bottom: 28px;
-            font-size: 0.85rem;
-            border-bottom: 1px solid #e2e6d8;
-            display: inline-block;
-            width: auto;
-            margin-left: auto;
-            margin-right: auto;
-            padding-bottom: 6px;
-        }
-        .desc {
-            text-align: center;
-            color: #6a785d;
-            line-height: 1.5;
-            margin: 20px 0 28px;
-            font-size: 0.95rem;
-            font-weight: 350;
-        }
-        .btn-start {
-            background: #7f8c6e;
-            border: none;
-            color: white;
-            font-weight: 400;
-            font-size: 1.1rem;
-            padding: 14px 20px;
-            width: 100%;
-            border-radius: 40px;
-            cursor: pointer;
-            transition: 0.1s linear;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
+        h1 { font-size: 1.9rem; font-weight: 500; text-align: center; color: #4a5b3e; letter-spacing: -0.5px; margin-bottom: 12px; }
+        .sub { text-align: center; color: #8f9b82; font-weight: 400; margin-bottom: 28px; font-size: 0.85rem; border-bottom: 1px solid #e2e6d8; display: inline-block; width: auto; margin-left: auto; margin-right: auto; padding-bottom: 6px; }
+        .desc { text-align: center; color: #6a785d; line-height: 1.5; margin: 20px 0 28px; font-size: 0.95rem; font-weight: 350; }
+        .btn-start { background: #7f8c6e; border: none; color: white; font-weight: 400; font-size: 1.1rem; padding: 14px 20px; width: 100%; border-radius: 40px; cursor: pointer; transition: 0.1s linear; display: flex; align-items: center; justify-content: center; gap: 10px; }
         .btn-start:hover { background: #6a785d; }
         .progress-area { margin-bottom: 28px; }
         .progress-text { display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 400; color: #8f9b82; margin-bottom: 6px; }
@@ -92,98 +24,42 @@
         .progress-fill { background: #7f8c6e; width: 0%; height: 100%; border-radius: 20px; transition: width 0.2s ease; }
         .question-text { font-size: 1.4rem; font-weight: 450; line-height: 1.3; margin: 12px 0 24px; color: #3e4d36; }
         .options-grid { display: flex; flex-direction: column; gap: 12px; margin: 20px 0 32px; }
-        .option-item {
-            background: #ffffff;
-            border: 1px solid #dee2d4;
-            border-radius: 100px;
-            padding: 12px 18px;
-            font-weight: 400;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: 0.05s linear;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #4e5f43;
-        }
+        .option-item { background: #ffffff; border: 1px solid #dee2d4; border-radius: 100px; padding: 12px 18px; font-weight: 400; font-size: 0.95rem; cursor: pointer; transition: 0.05s linear; display: flex; align-items: center; gap: 12px; color: #4e5f43; }
         .option-item i { width: 22px; color: #b3bfa1; font-size: 1rem; }
-        .option-item.selected {
-            background: #f0f3ea;
-            border-color: #7f8c6e;
-            color: #4a5b3e;
-        }
+        .option-item.selected { background: #f0f3ea; border-color: #7f8c6e; color: #4a5b3e; }
         .option-item.selected i { color: #7f8c6e; }
         .nav-buttons { display: flex; justify-content: space-between; gap: 15px; margin-top: 12px; }
-        .nav-btn {
-            background: #f0f2ea;
-            border: none;
-            padding: 10px 0;
-            border-radius: 40px;
-            font-weight: 400;
-            font-size: 0.9rem;
-            cursor: pointer;
-            flex: 1;
-            color: #6a785d;
-        }
+        .nav-btn { background: #f0f2ea; border: none; padding: 10px 0; border-radius: 40px; font-weight: 400; font-size: 0.9rem; cursor: pointer; flex: 1; color: #6a785d; }
         .nav-btn.primary { background: #7f8c6e; color: white; }
         .nav-btn:active { opacity: 0.7; }
         .result-badge { text-align: center; margin-bottom: 20px; }
-        .personality-name { font-size: 1.8rem; font-weight: 450; color: #5b6e4a; margin: 8px 0; letter-spacing: -0.3px; }
-        .personality-desc {
-            background: #f5f7f0;
-            padding: 18px 20px;
-            border-radius: 28px;
-            margin: 20px 0;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            color: #5b6b4e;
-            border-left: 3px solid #b9c4a2;
-        }
-        .radar-container { margin: 20px 0; background: #ffffff; border-radius: 28px; padding: 8px; }
-        canvas { max-height: 260px; width: 100%; }
-        .share-btn, .retake-btn {
-            width: 100%;
-            padding: 12px;
-            border-radius: 40px;
-            font-weight: 400;
-            font-size: 0.9rem;
-            margin-top: 10px;
-            border: none;
-            cursor: pointer;
-            background: #eef2e6;
-            color: #6a785d;
-        }
+        .personality-name { font-size: 1.8rem; font-weight: 500; color: #5b6e4a; margin: 8px 0; letter-spacing: -0.3px; }
+        .personality-desc { background: #f5f7f0; padding: 18px 20px; border-radius: 28px; margin: 20px 0; font-size: 0.95rem; line-height: 1.5; color: #5b6b4e; border-left: 3px solid #b9c4a2; }
+        .color-chart { display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-around; gap: 8px; margin: 24px 0; overflow-x: auto; padding-bottom: 4px; }
+        .color-card { flex: 1 0 auto; min-width: 56px; text-align: center; background: #fafcf5; border-radius: 20px; padding: 8px 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .color-swatch { width: 100%; height: 48px; border-radius: 16px; margin-bottom: 8px; box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); }
+        .color-label { font-weight: 600; color: #5b6e4a; font-size: 0.7rem; margin-bottom: 4px; }
+        .color-value { font-size: 1rem; font-weight: 700; color: #4a5b3e; }
+        .dimension-breakdown { margin: 24px 0 16px; background: #fafcf5; border-radius: 28px; padding: 16px 20px; }
+        .dimension-item { margin-bottom: 18px; border-bottom: 1px solid #e2e6d8; padding-bottom: 12px; }
+        .dimension-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .dimension-title { font-weight: 600; color: #5b6e4a; margin-bottom: 6px; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+        .dimension-desc { font-size: 0.85rem; color: #7f8c6e; line-height: 1.4; }
+        .share-btn, .retake-btn { width: 100%; padding: 12px; border-radius: 40px; font-weight: 400; font-size: 0.9rem; margin-top: 10px; border: none; cursor: pointer; background: #eef2e6; color: #6a785d; }
         .retake-btn { background: #7f8c6e; color: white; }
-        .toast-msg {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #4e5f43;
-            color: #eef2e6;
-            padding: 8px 18px;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            z-index: 999;
-            opacity: 0;
-            transition: 0.15s;
-            pointer-events: none;
-        }
+        .toast-msg { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #4e5f43; color: #eef2e6; padding: 8px 18px; border-radius: 40px; font-size: 0.75rem; z-index: 999; opacity: 0; transition: 0.15s; pointer-events: none; }
         footer { text-align: center; font-size: 0.65rem; color: #b1be9b; margin-top: 28px; }
         .hidden { display: none; }
-        .cartoon-style {
-            font-family: monospace;
-            white-space: pre;
-            font-size: 11px;
-            line-height: 1.2;
-            text-align: center;
-            background: #fafcf5;
-            padding: 12px 5px;
-            border-radius: 24px;
-            margin: 10px 0;
-            color: #7d8b67;
-        }
-        @media (max-width: 480px) { .cartoon-style { font-size: 9px; } }
+        .prob-note { text-align: center; font-size: 0.7rem; color: #9aaa8a; margin-top: 12px; }
+        .share-image-container { position: fixed; left: -9999px; top: -9999px; width: 600px; background: #fefcf8; border-radius: 32px; padding: 28px 24px; font-family: 'Inter', sans-serif; z-index: -1; opacity: 0; pointer-events: none; }
+        .share-image-container.visible-for-capture { left: 0; top: 0; opacity: 1; z-index: 9999; pointer-events: none; }
+        .share-image-container .personality-name-share { font-size: 1.6rem; font-weight: 700; color: #5b6e4a; text-align: center; margin-bottom: 16px; }
+        .share-image-container .personality-desc-share { background: #f5f7f0; padding: 14px; border-radius: 24px; font-size: 0.85rem; color: #5b6b4e; margin-bottom: 20px; line-height: 1.4; }
+        .share-image-container .color-chart-share { display: flex; gap: 12px; justify-content: space-between; margin: 20px 0; }
+        .share-image-container .color-card-share { flex: 1; text-align: center; }
+        .share-image-container .color-swatch-share { height: 60px; border-radius: 16px; margin-bottom: 8px; }
+        .share-footer { text-align: center; font-size: 0.7rem; color: #b1be9b; margin-top: 20px; border-top: 1px solid #e2e6d8; padding-top: 12px; }
+        @media (max-width: 520px) { .color-card { min-width: 48px; padding: 6px 2px; } .color-swatch { height: 40px; } .color-label { font-size: 0.6rem; } .color-value { font-size: 0.85rem; } .color-chart { gap: 4px; } }
     </style>
 </head>
 <body>
@@ -191,139 +67,131 @@
     <div id="startScreen" class="card">
         <div class="hero-icon"><i class="fas fa-frisbee"></i></div>
         <h1>飞盘人格测试</h1>
-        <div style="text-align: center;"><span class="sub">极端选项 · 冷淡盘学</span></div>
-        <div class="desc">
-            30道题，选项比较极端。<br>
-            选最像你的那个就行。不用想太多。
-        </div>
-        <button class="btn-start" id="startBtn">开始</button>
-        <footer>结果也就那样，别太在意</footer>
+        <div style="text-align: center;"><span class="sub">六维色盘 · 均衡匹配</span></div>
+        <div class="desc">30道选择题，测出你最真实的盘场底色。</div>
+        <button class="btn-start" id="startBtn">开始测试</button>
+        <footer>结果仅供参考</footer>
     </div>
-
     <div id="quizScreen" class="card hidden">
-        <div class="progress-area">
-            <div class="progress-text"><span id="qCounter">第1题</span><span id="qPercent">0%</span></div>
-            <div class="progress-bar-bg"><div class="progress-fill" id="progressFill"></div></div>
-        </div>
+        <div class="progress-area"><div class="progress-text"><span id="qCounter">第1题</span><span id="qPercent">0%</span></div><div class="progress-bar-bg"><div class="progress-fill" id="progressFill"></div></div></div>
         <div class="question-text" id="questionText"></div>
         <div class="options-grid" id="optionsContainer"></div>
-        <div class="nav-buttons">
-            <button class="nav-btn" id="prevBtn">◀ 上一题</button>
-            <button class="nav-btn primary" id="nextBtn">下一题 ▶</button>
-        </div>
+        <div class="nav-buttons"><button class="nav-btn" id="prevBtn">◀ 上一题</button><button class="nav-btn primary" id="nextBtn">下一题 ▶</button></div>
     </div>
-
     <div id="resultScreen" class="card hidden">
-        <div class="result-badge">
-            <div id="cartoonContainer" class="cartoon-style"></div>
-            <div class="personality-name" id="personalityName"></div>
-            <div style="font-size:0.7rem; background:#f0f3ea; display: inline-block; padding: 3px 14px; border-radius: 30px;">大概就是这样</div>
-        </div>
+        <div class="result-badge"><div class="personality-name" id="personalityName"></div><div style="font-size:0.7rem; background:#f0f3ea; display: inline-block; padding: 3px 14px; border-radius: 30px;">你的盘学人格</div></div>
         <div class="personality-desc" id="personalityDesc"></div>
-        <div class="radar-container">
-            <canvas id="radarChart" width="400" height="260"></canvas>
-        </div>
-        <button class="share-btn" id="shareResultBtn">分享 · 也可以不分享</button>
+        <div class="color-chart" id="colorChart"></div>
+        <div class="dimension-breakdown" id="dimensionBreakdown"></div>
+        <button class="share-btn" id="shareResultBtn">📸 生成分享图片</button>
         <button class="retake-btn" id="retakeBtn">重新测一次</button>
+        <div class="prob-note">✨ 24种人格理论概率均等 (各约4.17%) ✨</div>
         <footer>冷淡提示：人生本就没什么意义</footer>
     </div>
 </div>
-<div id="toastMsg" class="toast-msg">已复制，随你便。</div>
+<div id="shareImageTemplate" class="share-image-container">
+    <div style="text-align: center; margin-bottom: 16px;"><i class="fas fa-frisbee" style="font-size: 48px; color: #6f7c5f;"></i></div>
+    <div class="personality-name-share" id="sharePersonalityName"></div>
+    <div class="personality-desc-share" id="sharePersonalityDesc"></div>
+    <div class="color-chart-share" id="shareColorChart"></div>
+    <div class="share-footer">飞盘人格测试 · 你的专属盘学报告</div>
+</div>
+<div id="toastMsg" class="toast-msg">📸 图片生成中...</div>
 
 <script>
-    const DIMENSIONS = ["throw", "speed", "defense", "stamina", "tactics", "teamwork"];
-    const DIM_NAMES_CN = ["投掷", "速度", "防守", "耐力", "战术", "团队"];
-
-    // ========= 30题，每个选项分数拉开差距，极端化 (0-5分范围，突出差异) =========
+    const DIM_NAMES_CN = ["投掷技巧", "速度爆发", "防守压迫", "耐力持久", "战术意识", "团队精神"];
+    const DIM_SHORT = ["投掷", "速度", "防守", "耐力", "战术", "团队"];
+    
+    // ======================= 30题 (每题单项0-3分，总分0-90) =======================
     const QUESTIONS = [
-        { text: "队友让你跑一个 deep cut，你一般会？", options: [
-            { text: "全力冲刺，跑到接不到为止", scores: [0,5,0,2,1,1] },
+        { text: "队友让你跑 deep cut，你一般会？", options: [
+            { text: "全力冲刺，跑到接不到为止", scores: [0,3,0,1,0,0] },
             { text: "慢跑，反正也不一定传", scores: [0,1,0,0,0,0] },
             { text: "站在原地，懒得动", scores: [0,0,0,0,0,0] },
-            { text: "跑一半停下来，假装被挡住了", scores: [0,2,0,0,0,1] }
+            { text: "跑一半停下来，假装被挡住了", scores: [0,1,0,0,0,0] }
         ]},
         { text: "你的反手盘是什么水平？", options: [
             { text: "完全没有，从不使用", scores: [0,0,0,0,0,0] },
             { text: "能传，但弧线像彩虹", scores: [2,0,0,0,0,0] },
-            { text: "稳得一批，比正手还好", scores: [5,0,0,0,1,0] },
+            { text: "稳得一批，比正手还好", scores: [3,0,0,0,1,0] },
             { text: "时好时坏，完全看运气", scores: [1,0,0,0,0,0] }
         ]},
         { text: "防守时被对手一步过掉，你的反应是？", options: [
             { text: "放弃回追，反正也追不上", scores: [0,0,0,0,0,0] },
-            { text: "拼命回追，哪怕追到对面底线", scores: [0,2,4,2,0,1] },
+            { text: "拼命回追，哪怕追到对面底线", scores: [0,1,3,1,0,0] },
             { text: "伸手拉一下衣服，但立刻松手", scores: [0,0,2,0,0,0] },
             { text: "目送得分，然后叹口气", scores: [0,0,0,0,0,0] }
         ]},
         { text: "比赛进行到下半场，你的体能状态？", options: [
-            { text: "还能再打两小时", scores: [0,0,0,5,0,0] },
+            { text: "还能再打两小时", scores: [0,0,0,3,0,0] },
             { text: "已经走不动了，想躺下", scores: [0,0,0,0,0,0] },
-            { text: "全靠意志力，腿已经不是自己的", scores: [0,0,0,3,0,1] },
+            { text: "全靠意志力，腿已经不是自己的", scores: [0,0,0,2,0,1] },
             { text: "还行，但不想跑了", scores: [0,0,0,1,0,0] }
         ]},
         { text: "队友失误导致丢分，你的第一反应？", options: [
-            { text: "没关系，下一分打回来", scores: [0,0,0,0,0,4] },
-            { text: "忍不住叹气，但不说出来", scores: [0,0,0,0,0,0] },
+            { text: "没关系，下一分打回来", scores: [0,0,0,0,0,3] },
+            { text: "忍不住叹气，但不说出来", scores: [0,0,0,0,0,1] },
             { text: "直接说'你怎么搞的'", scores: [0,0,0,0,0,0] },
             { text: "走开，不想说话", scores: [0,0,0,0,0,0] }
         ]},
         { text: "你觉得自己在队里的定位？", options: [
             { text: "核心，没我不行", scores: [2,2,2,2,2,2] },
             { text: "透明人，可有可无", scores: [0,0,0,0,0,0] },
-            { text: "气氛组，负责喊nice", scores: [0,0,0,0,0,4] },
+            { text: "气氛组，负责喊nice", scores: [0,0,0,0,0,3] },
             { text: "苦力，干脏活累活", scores: [0,1,3,2,0,1] }
         ]},
         { text: "面对一个几乎不可能接到的长传，你会？", options: [
-            { text: "全力冲刺，万一接到了呢", scores: [0,5,0,2,0,1] },
+            { text: "全力冲刺，万一接到了呢", scores: [0,3,0,2,0,0] },
             { text: "象征性跑两步，然后放弃", scores: [0,1,0,0,0,0] },
             { text: "根本不跑，看都不看", scores: [0,0,0,0,0,0] },
             { text: "跑，但心里觉得接不到", scores: [0,2,0,0,0,0] }
         ]},
         { text: "你如何看待飞盘精神（SOTG）？", options: [
-            { text: "很重要，严格遵守", scores: [0,0,0,0,0,5] },
+            { text: "很重要，严格遵守", scores: [0,0,0,0,0,3] },
             { text: "知道但不太在意", scores: [0,0,0,0,0,1] },
             { text: "无所谓，赢最重要", scores: [0,0,0,0,0,0] },
             { text: "有点烦，觉得太矫情", scores: [0,0,0,0,0,0] }
         ]},
         { text: "你的无球跑动风格更像？", options: [
-            { text: "永远在跑，但跑不出空位", scores: [0,3,0,2,0,1] },
+            { text: "永远在跑，但跑不出空位", scores: [0,2,0,2,0,0] },
             { text: "基本不跑，等盘来找我", scores: [0,0,0,0,0,0] },
-            { text: "跑得很聪明，总能出现在空位", scores: [0,4,0,2,4,2] },
+            { text: "跑得很聪明，总能出现在空位", scores: [0,3,0,1,3,1] },
             { text: "乱跑，队友都不知道我在哪", scores: [0,2,0,0,0,0] }
         ]},
         { text: "你的传盘稳定性，怎么形容？", options: [
-            { text: "稳如老狗，几乎不失误", scores: [5,0,0,0,1,0] },
+            { text: "稳如老狗，几乎不失误", scores: [3,0,0,0,1,0] },
             { text: "经常失误，队友已经习惯了", scores: [0,0,0,0,0,0] },
             { text: "看状态，有时候神有时候鬼", scores: [2,0,0,0,0,0] },
             { text: "只敢传安全盘，从不冒险", scores: [2,0,0,0,1,1] }
         ]},
         { text: "队伍落后很多时，你的状态？", options: [
-            { text: "更拼了，想翻盘", scores: [0,3,2,2,2,2] },
+            { text: "更拼了，想翻盘", scores: [0,2,2,2,2,2] },
             { text: "已经放弃，等结束", scores: [0,0,0,0,0,0] },
             { text: "无所谓，反正也不是第一次输", scores: [0,0,0,0,0,0] },
             { text: "想努力，但感觉没希望", scores: [0,1,0,0,0,1] }
         ]},
         { text: "你觉得自己最大的优点是什么？", options: [
-            { text: "技术好", scores: [4,0,0,0,0,0] },
-            { text: "跑得快", scores: [0,5,0,0,0,0] },
-            { text: "脾气好，从不抱怨", scores: [0,0,0,0,0,4] },
-            { text: "防守硬", scores: [0,0,5,1,0,0] }
+            { text: "技术好", scores: [3,0,0,0,0,0] },
+            { text: "跑得快", scores: [0,3,0,0,0,0] },
+            { text: "脾气好，从不抱怨", scores: [0,0,0,0,0,3] },
+            { text: "防守硬", scores: [0,0,3,1,0,0] }
         ]},
         { text: "持盘超过5秒还没传出去，你会？", options: [
-            { text: "冷静观察，找到最佳选择", scores: [2,0,0,0,4,1] },
+            { text: "冷静观察，找到最佳选择", scores: [2,0,0,0,3,0] },
             { text: "慌张出盘，大概率被断", scores: [0,0,0,0,0,0] },
             { text: "自己跑，然后被逼出界", scores: [0,2,0,0,0,0] },
             { text: "大喊'没人跑位'", scores: [0,0,0,0,0,1] }
         ]},
         { text: "别人对你做假动作，你通常？", options: [
             { text: "被晃飞，然后目送", scores: [0,0,0,0,0,0] },
-            { text: "不吃晃，稳稳跟住", scores: [0,0,4,1,1,0] },
-            { text: "伸手掏盘，赌一把", scores: [0,0,3,0,0,0] },
+            { text: "不吃晃，稳稳跟住", scores: [0,0,3,1,1,0] },
+            { text: "伸手掏盘，赌一把", scores: [0,0,2,0,0,0] },
             { text: "懒得动，让他过", scores: [0,0,0,0,0,0] }
         ]},
         { text: "你的飞盘偶像是什么风格？", options: [
-            { text: "控盘大师，靠脑子打球", scores: [1,0,0,0,5,0] },
-            { text: "速度狂魔，跑位风骚", scores: [0,5,0,1,0,0] },
-            { text: "防守悍将，让人难受", scores: [0,0,5,1,0,0] },
+            { text: "控盘大师，靠脑子打球", scores: [1,0,0,0,3,0] },
+            { text: "速度狂魔，跑位风骚", scores: [0,3,0,1,0,0] },
+            { text: "防守悍将，让人难受", scores: [0,0,3,1,0,0] },
             { text: "全能战士，什么都行", scores: [2,2,2,2,2,2] }
         ]},
         { text: "被对手得分后，你的情绪？", options: [
@@ -333,7 +201,7 @@
             { text: "无所谓，输赢正常", scores: [0,0,0,0,0,1] }
         ]},
         { text: "你的耐力在飞盘圈属于？", options: [
-            { text: "铁人，全场不歇", scores: [0,0,0,5,0,0] },
+            { text: "铁人，全场不歇", scores: [0,0,0,3,0,0] },
             { text: "打一会就喘，需要轮换", scores: [0,0,0,1,0,0] },
             { text: "基本告别下半场", scores: [0,0,0,0,0,0] },
             { text: "够用，但不算突出", scores: [0,0,0,2,0,0] }
@@ -346,25 +214,25 @@
         ]},
         { text: "你如何处理飞盘场上的争执？", options: [
             { text: "争到底，必须讲清楚", scores: [0,0,0,0,0,0] },
-            { text: "算了，懒得争", scores: [0,0,0,0,0,3] },
-            { text: "找队长解决", scores: [0,0,0,0,0,2] },
+            { text: "算了，懒得争", scores: [0,0,0,0,0,2] },
+            { text: "找队长解决", scores: [0,0,0,0,0,1] },
             { text: "直接走开，不理", scores: [0,0,0,0,0,0] }
         ]},
         { text: "你的启动速度大概是？", options: [
-            { text: "爆发极强，第一步超快", scores: [0,5,0,0,0,0] },
-            { text: "中等偏上，够用", scores: [0,3,0,0,0,0] },
+            { text: "爆发极强，第一步超快", scores: [0,3,0,0,0,0] },
+            { text: "中等偏上，够用", scores: [0,2,0,0,0,0] },
             { text: "很慢，像起跑没反应过来", scores: [0,0,0,0,0,0] },
             { text: "看情况，有时候快有时候慢", scores: [0,2,0,0,0,0] }
         ]},
         { text: "你觉得飞盘对你来说意味着什么？", options: [
-            { text: "生命的一部分", scores: [1,1,1,1,1,4] },
+            { text: "生命的一部分", scores: [1,1,1,1,1,3] },
             { text: "消磨时间的运动", scores: [0,0,0,0,0,1] },
             { text: "社交工具，认识人", scores: [0,0,0,0,0,2] },
             { text: "没什么特别的意义", scores: [0,0,0,0,0,0] }
         ]},
         { text: "你的战术意识，怎么评价？", options: [
             { text: "几乎没有，全靠本能", scores: [0,0,0,0,0,0] },
-            { text: "很清楚，能预判对手", scores: [0,0,0,0,5,1] },
+            { text: "很清楚，能预判对手", scores: [0,0,0,0,3,1] },
             { text: "知道理论，但场上反应慢", scores: [0,0,0,0,2,0] },
             { text: "偶尔灵光一现", scores: [0,0,0,0,1,0] }
         ]},
@@ -381,7 +249,7 @@
             { text: "可有可无", scores: [0,0,0,0,0,0] }
         ]},
         { text: "你的正手盘是什么水平？", options: [
-            { text: "顶级，指哪打哪", scores: [5,0,0,0,0,0] },
+            { text: "顶级，指哪打哪", scores: [3,0,0,0,0,0] },
             { text: "完全不会，只用反手", scores: [0,0,0,0,0,0] },
             { text: "一般，偶尔出界", scores: [1,0,0,0,0,0] },
             { text: "能用，但没信心", scores: [1,0,0,0,0,0] }
@@ -393,7 +261,7 @@
             { text: "没什么反应", scores: [0,0,0,0,0,0] }
         ]},
         { text: "你对飞盘技术的态度？", options: [
-            { text: "不断练习，追求完美", scores: [4,2,2,1,2,1] },
+            { text: "不断练习，追求完美", scores: [3,2,2,1,2,1] },
             { text: "够用就行，懒得练", scores: [0,0,0,0,0,0] },
             { text: "想提高，但坚持不下来", scores: [1,0,0,0,0,0] },
             { text: "随缘，开心就好", scores: [0,0,0,0,0,2] }
@@ -405,37 +273,46 @@
             { text: "尽力打完最后几分", scores: [0,1,1,1,1,1] }
         ]},
         { text: "你觉得自己是一个有激情的飞盘手吗？", options: [
-            { text: "非常有激情，全场最high", scores: [0,2,1,1,0,4] },
+            { text: "非常有激情，全场最high", scores: [0,2,1,1,0,3] },
             { text: "没什么激情，比较冷淡", scores: [0,0,0,0,0,0] },
             { text: "看心情，状态好就激情", scores: [0,1,0,0,0,2] },
             { text: "激情不如躺着", scores: [0,0,0,0,0,0] }
         ]}
     ];
 
-    // 14种人格 + 冷淡描述 + 专属卡通（ASCII）
+    // 24种人格 - 向量均匀分布在1~9之间，避免低分聚集区（已校准）
     const PERSONALITIES = [
-        { name: "🌿 散步型选手", desc: "你在场上移动的速度，和公园里看手机的人差不多。不是不想跑，是觉得没必要。队友喊你，你听到了，但脚步没有加快。", vector: [2,1,1,2,1,3], ascii: "   🚶\n  / 🥏\n /   \\\n(慢悠悠)" },
-        { name: "🫥 透明人", desc: "存在感约等于零。没人记得你上局在哪个队，甚至你自己也不太确定。接盘不多，失误也不多，就像背景里的那棵树。", vector: [1,1,1,1,1,1], ascii: "   👤\n  /   \\\n  _ _\n(谁？)" },
-        { name: "🧻 甩锅惯犯", desc: "失误后那句'我的'说得很流畅，但下一盘依然会传给对手。不是故意的，只是恰好每次都这样。", vector: [3,2,2,2,5,2], ascii: "   👐\n  /🎭\\\n  ‾‾\n(不关我事)" },
-        { name: "🪨 防守石墩", desc: "你的防守动作和路边的石墩差不多——一动不动。对手过你的时候甚至不需要变向。", vector: [1,1,2,1,1,1], ascii: "   🪨\n  /   \\\n  ‾‾\n(别指望)" },
-        { name: "📦 接盘恐惧症", desc: "接到盘就像接到烫手山芋，恨不得立刻扔出去。方向准不准不重要，重要的是不在自己手里。", vector: [2,2,1,2,1,2], ascii: "   📦\n  / 😨\n /  🥏\n(快拿走)" },
-        { name: "🥱 节能模式", desc: "你是场上最省电的人。能走绝不跑，能看绝不追。赛后别人在复盘，你在想晚饭吃什么。", vector: [1,1,1,2,1,2], ascii: "   😴\n  / 🥏\n /   \\\n(懒得动)" },
-        { name: "🔮 随缘传盘", desc: "你的传盘方向由宇宙决定。队友不知道你要传给谁，对手也不知道，可能你自己也不知道。", vector: [3,2,1,2,2,2], ascii: "   🔮\n  / 🥏\n /   \\\n(看缘分)" },
-        { name: "🍂 秋风格局", desc: "你的跑动路线和落叶一样随机。跑了很多，但没什么意义。队友看着你，欲言又止。", vector: [1,2,1,2,1,2], ascii: "   🍂\n  / 🥏\n /   \\\n(飘忽)" },
-        { name: "🧠 战术纸上谈兵", desc: "你在场下分析得头头是道，上场后全部忘光。理论满分，实践零分，你自己也知道。", vector: [2,1,1,1,6,3], ascii: "   📖\n  / 🤓\n /   \\\n(只是说说)" },
-        { name: "💨 三秒爆发", desc: "你的速度只能维持三秒，然后就泄气了。像一阵风，吹过就没了。对手甚至没注意到你。", vector: [1,4,1,1,1,1], ascii: "   💨\n  / 🥏\n /   \\\n(没了)" },
-        { name: "☕ 气氛组成员", desc: "你的主要贡献是带零食和喊nice。上场时间不多，但零食很好吃。大家对你没有太多期待。", vector: [1,1,1,1,1,7], ascii: "   ☕\n  / 🍪\n /   \\\n(好吃就行)" },
-        { name: "🎢 过山车体验者", desc: "你的状态起伏不定，有时候像高手，有时候像新手。你自己也不知道下一秒会是什么样。", vector: [4,4,3,3,3,3], ascii: "   🎢\n  / 😵\n /   \\\n(随缘)" },
-        { name: "🧊 冷感防守", desc: "你的防守不叫防守，叫目送。对手得分后你会轻轻点一下头，表示你看到了。", vector: [1,1,1,2,1,2], ascii: "   🧊\n  / 🥏\n /   \\\n(冻住了)" },
-        { name: "📉 反向贡献者", desc: "你上场后对方的胜率反而提高了。不是故意的，但事情就是这样发生的。", vector: [1,2,1,2,1,1], ascii: "   📉\n  / 🥏\n /   \\\n(不好意思)" }
+        { name: "👻 完全透明人", mainDesc: "你的存在感大概和空气差不多——大家都需要你，但没人看得见你。接盘？偶尔。失误？也偶尔。但最厉害的是，你失误了也没人注意到。队友复盘时甚至会问'刚才我们队有这个人吗'。你不是在打飞盘，你是在飞盘场上进行一场行为艺术，主题叫《消失的玩家》。", dimComments: ["你的投掷像在梦里扔枕头，软绵绵且方向随机。","启动速度和树懒赛跑可能还会输。","防守？你站的位置叫‘观众席延伸区’。","耐力大概够打完一个回合，然后需要躺平三天。","战术意识：你知道飞盘是圆的。","团队精神：你最大的贡献是不添乱，但也仅此而已。"], vector: [2.0,2.0,2.0,2.0,2.0,2.0] },
+        { name: "🌿 散步型选手", mainDesc: "你在场上的移动速度，和公园里看手机的大爷差不多。不是跑不动，是觉得没必要。队友喊你跑位，你听到了，但大脑给腿的信号被‘算了’拦截了。你坚信飞盘的终极奥义是‘能不走绝不跑，能站绝不蹲’。赛后别人在复盘，你在想待会吃什么。", dimComments: ["传盘偶尔有灵光，但多数时候像没睡醒。","你的速度单位是‘老年散步时速’。","防守全靠眼神吓唬人。","耐力：半场之后就开始思考人生意义。","战术？你遵循的战术叫‘随缘走位’。","团队合作：你安静得像个幽灵，队友经常忘记你在场上。"], vector: [3.5,2.5,2.0,3.0,2.0,3.0] },
+        { name: "🥱 节能模式", mainDesc: "你是场上最省电的人，没有之一。能走绝不跑，能看绝不追。你的座右铭是‘留着力气回家躺’。别人冲刺你慢跑，别人拼抢你目送。你觉得自己不是懒，是懂得能量守恒。队友气喘吁吁时，你甚至连汗都没怎么出。", dimComments: ["投掷动作像慢动作回放，但偶尔还挺准。","速度和你家WiFi一样——时有时无。","防守时你更像一个交通锥，立在那不动。","耐力：你省电模式下的电池还挺耐用，就是功率低。","战术？你脑子里有一本《如何偷懒的108招》。","团队：你存在，但像手机后台应用——不占用前台资源。"], vector: [2.5,1.8,1.8,2.5,1.8,2.8] },
+        { name: "🍄 蘑菇型选手", mainDesc: "你像一朵长在角落的蘑菇，安静、低调、一动不动。偶尔冒出来接个盘，然后又缩回去。队友经常找不到你，因为你躲在所有人都看不见的阴影里。你不是故意隐身，你只是觉得跑来跑去太累了，蹲着挺好。", dimComments: ["传盘像蘑菇孢子——随风飘散，落到哪算哪。","你的启动速度需要先热车五分钟。","防守面积和蘑菇的伞盖差不多大。","耐力：蘑菇不需要跑，所以你的耐力其实还行。","战术意识：你知道蘑菇怎么长，但不知道飞盘怎么打。","团队：你是团队里的‘彩蛋’，偶尔出现，让人惊喜（或惊吓）。"], vector: [3.0,2.2,2.0,3.0,2.0,2.5] },
+        { name: "📦 接盘恐惧症", mainDesc: "接到盘对你来说不是机会，是灾难。你像接到了一颗手雷，恨不得立刻扔出去。方向准不准不重要，重要的是盘不在自己手里。队友跑出空位你也看不见，因为你已经在想怎么把盘甩出去了。你的信条：‘持盘超过两秒就是犯罪’。", dimComments: ["传盘像烫手山芋，速度极快但方向随缘。","你的速度还行，但只用于逃离持盘区。","防守？你根本没心思防守，你只关心什么时候能传出去。","耐力不错，因为紧张会让你多跑几步。","战术：你知道要传给队友，但不知道传给谁。","团队：你太急着出盘了，队友还没跑到位你就扔了。"], vector: [4.0,3.0,2.2,3.0,2.2,2.8] },
+        { name: "🧻 甩锅惯犯", mainDesc: "你的‘我的我的’说得比谁都快，但下一盘依然会精准地传给对手。你不是故意的，你只是觉得‘这次应该没问题吧’。每次失误后你都会诚恳道歉，然后重复同样的错误。队友已经习惯了你，就像习惯了糟糕的天气。", dimComments: ["你的投掷像抽奖，中奖概率约等于彩票。","速度一般，但逃跑速度一流。","防守：你更擅长用嘴巴道歉，而不是用手防守。","耐力足够支撑你全场失误。","战术意识：你知道错了，但不知道为什么错。","团队精神：你的道歉很真诚，但没什么用。"], vector: [4.2,3.0,2.8,3.2,5.5,3.0] },
+        { name: "🍂 秋风格局", mainDesc: "你的跑动路线和落叶一样随机。你跑了，但跑的方向连你自己都不知道。队友看着你左摇右晃，欲言又止。你觉得自己很努力，但实际上你只是把体力浪费在了无效跑动上。赛后你问队友‘我刚才跑位怎么样’，队友沉默了三秒说‘挺好的’。", dimComments: ["传盘时好时坏，和你当天的玄学状态有关。","你跑得挺快，但像没头苍蝇。","防守时你也在跑，但永远跑错方向。","耐力：你跑了很多，但全白跑了。","战术：你的跑位是布朗运动。","团队：队友不知道该怎么配合你，因为你连自己都不知道要去哪。"], vector: [3.0,4.5,2.5,3.5,2.5,3.0] },
+        { name: "🧊 冷感防守", mainDesc: "你的防守不叫防守，叫目送。对手过你的时候，你会轻轻点一下头，表示你看到了。你觉得‘反正也防不住，不如省点力气’。你最大的优点是从来不会因为防守而犯规——因为你根本没伸手。", dimComments: ["投掷：你更愿意传球而不是自己打。","速度：追不上就不追了，很理性。","防守：你的防守方式是‘眼神防守’plus版。","耐力：你省下了防守的体力，所以耐力还行。","战术：你知道对手要过你，但你不拦。","团队：你的防守区域是‘开放区’，对手随便进。"], vector: [2.8,2.5,3.0,2.5,2.2,3.0] },
+        { name: "🪨 防守石墩", mainDesc: "你的防守动作和路边的石墩差不多——一动不动。对手过你的时候甚至不需要假动作，因为你根本不会动。你觉得‘站住位置就行’，但你的位置是对手最喜欢的突破路线。队友喊你‘跟上去’，你回了一句‘我在站位’。", dimComments: ["传盘：基本不传，因为你拿不到盘。","速度：你的启动需要助跑。","防守：你的防守范围只有自己站的那个点。","耐力：不动当然不累。","战术：你理解的站位就是‘站在那’。","团队：你的防守就像少了一个人。"], vector: [2.0,2.0,4.5,2.0,2.0,2.0] },
+        { name: "💨 三秒爆发", mainDesc: "你的速度只能维持三秒，然后就泄气了。开局你像博尔特，三秒后你像刚跑完马拉松。对手一开始被你吓到，后来发现只要扛过三秒，你就自动退赛了。你的爆发力很强，但你的续航和手机低电量模式差不多。", dimComments: ["传盘：你跑太快了，传盘跟不上你的速度。","你的启动速度是顶尖的，三秒后是垫底的。","防守：前三秒你是铁闸，之后你是木桩。","耐力：你的电池容量只有三秒。","战术：你知道要快攻，但只能快攻三秒。","团队：队友得在三秒内把盘给你，不然你就废了。"], vector: [3.0,7.0,3.0,3.5,2.5,2.5] },
+        { name: "🔮 随缘传盘", mainDesc: "你的传盘方向由宇宙决定。队友不知道你要传给谁，对手也不知道，可能你自己也不知道。你坚信‘传出去了就有机会’，但机会通常是给对方的机会。你的盘轨迹诡异到空气动力学都无法解释，队友接你的盘需要提前买保险。", dimComments: ["投掷：你的盘走的是玄学路线。","速度：你不需要速度，反正盘自己会飞。","防守：你传完盘就站在原地看结果。","耐力：你的体力都用在‘祈祷盘别出界’上了。","战术：你的战术是‘扔出去再说’。","团队：接你的盘是一种极限运动。"], vector: [5.0,3.0,2.5,3.0,3.0,2.8] },
+        { name: "☕ 气氛组成员", mainDesc: "你的主要贡献是带零食和喊nice。上场时间不多，但零食很好吃。大家对你没有太多期待，但也没人讨厌你。你是团队里的‘充电宝’，不是技术上的，是精神上的——虽然你上场后大家的精神可能更紧张。", dimComments: ["传盘：你的技术配不上你的热情。","速度：你跑起来的样子很有喜感。","防守：你的防守像在跳舞。","耐力：你喊nice的耐力是满格的。","战术：你最大的战术是‘给队友加油’。","团队：你是团队粘合剂，虽然技术胶水不太够。"], vector: [2.5,2.5,2.5,2.5,2.5,8.5] },
+        { name: "📉 反向贡献者", mainDesc: "你上场后对方的胜率反而提高了。不是故意的，但事情就是这样发生的。你努力了，但你的努力方向似乎和胜利相反。队友看着你，想说点什么，最后还是咽了回去。你自己也很困惑：‘我明明很认真啊’。", dimComments: ["你的传盘经常变成助攻对手。","速度：你跑得越快，队友越慌。","防守：你的防守区域是对手的进攻起点。","耐力：你越持久，队伍输得越多。","战术：你理解的战术和实际执行的永远是反的。","团队：你是对手的最佳第六人。"], vector: [3.5,3.8,3.0,3.8,2.5,2.5] },
+        { name: "🎢 过山车体验者", mainDesc: "你的状态起伏不定，有时候像高手，有时候像新手。上一秒一条龙得分，下一秒黄油手连掉三个盘。你自己也不知道下一秒会是什么样，队友的心脏病快被你逼出来了。你安慰大家：‘这就是极限飞盘的魅力’。", dimComments: ["你的传盘像过山车，忽高忽低。","速度时快时慢，看你当天状态。","防守：今天铁闸明天漏勺。","耐力：你的状态曲线和心电图一样。","战术：你有时候聪明得像教授，有时候像小学生。","团队：和你做队友需要强大的心理素质。"], vector: [5.5,5.5,4.5,4.5,4.5,4.5] },
+        { name: "🧠 战术纸上谈兵", mainDesc: "你在场下分析得头头是道，上场后全部忘光。你的理论知识可以写一本书，但你的身体不配合。你指导队友‘你应该这么跑’，然后自己跑两步就喘。你的存在证明了一件事：飞盘智商和飞盘技术可以完全脱钩。", dimComments: ["理论上你知道怎么传，实际上你传不准。","速度：你的理论速度很快，实际很慢。","防守：你知道怎么防，但防不住。","耐力：你的理论耐力无限，实际只有两分钟。","战术：你是场下的诸葛亮，场上的臭皮匠。","团队：队友更愿意听你场下分析，而不是场上配合。"], vector: [4.0,2.5,2.5,2.5,7.5,3.8] },
+        { name: "⚡ 永动机", mainDesc: "全场飞奔，从不喊累。但你跑的方向对不对，那就是另一个问题了。你像上了发条一样停不下来，队友看着你跑来跑去，想说‘你跑错了’，但你已经跑远了。你的体力是优点，但你的方向感是缺点。", dimComments: ["传盘：你跑太快了，传盘跟不上你。","你的速度是全场最快的，但经常跑反方向。","防守：你追着对手跑，但永远追不上。","耐力：你的耐力是无限的，这点值得佩服。","战术：你的战术是‘跑就对了’。","团队：你跑得很努力，但队友不知道该怎么配合你。"], vector: [3.5,7.5,3.5,7.5,3.5,4.5] },
+        { name: "🎯 精准投掷机", mainDesc: "你的传盘像制导导弹，指哪打哪。但你的腿不太愿意配合。站着传你是大师，跑起来你就乱。队友经常喊‘别跑，站着传！’你也很无奈，因为你知道自己一跑就废。你的座右铭：‘能站着解决的事，绝不跑着办’。", dimComments: ["你的投掷是顶级的，站着的时候。","速度：你跑起来会严重影响你的投掷精度。","防守：你更愿意用传球解决问题，而不是防守。","耐力：你站着的时候耐力无限。","战术：你知道怎么传，但不知道怎么跑着传。","团队：队友会尽量把盘给你，让你站着传。"], vector: [7.5,2.5,2.5,2.5,5.0,3.0] },
+        { name: "🛡️ 人肉城墙", mainDesc: "防守端你是铁壁，但进攻端基本没用。你的座右铭：‘把对手防死就行，得分交给别人’。对手看到你就头疼，因为你真的很难缠。但队友看到你也头疼，因为球到你手里就出不去了。你是飞盘界的‘偏科生’，偏得还很厉害。", dimComments: ["你的传盘：能用就行，别要求太高。","速度：你不需要速度，你需要的是位置。","防守：你的防守是噩梦级的。","耐力：防守很耗体力，但你撑得住。","战术：你很清楚怎么防，但不太会攻。","团队：你是防守核心，但进攻时大家希望你远离盘。"], vector: [2.5,2.5,7.5,4.0,2.5,4.0] },
+        { name: "🤖 机器人执行者", mainDesc: "战术说怎么跑你就怎么跑，从不创新。优点是稳定，缺点是太稳定了，对手都猜得到你的下一步。你像一个编程好的机器人，输入战术，输出跑位。队友希望你能偶尔‘乱来’一下，但你做不到，因为你的代码里没有‘随机’这个指令。", dimComments: ["你的传盘很标准，但缺乏想象力。","速度稳定，不快不慢。","防守按部就班，不会犯错也不会出彩。","耐力稳定，你可以一直跑，但不会更快也不会更慢。","战术：你严格执行战术，哪怕战术是错的。","团队：你很可靠，但也很无聊。"], vector: [4.0,4.0,4.0,4.0,6.0,6.0] },
+        { name: "😐 冷漠脸", mainDesc: "得分不笑，丢分不哭。你脸上的表情永远只有一个：😐。队友怀疑你是不是真的喜欢飞盘，还是只是被迫来参加。你说你喜欢，但你的表情出卖了你。你是飞盘场上的‘扑克脸’，没人能从你的表情读出比分。", dimComments: ["你的传盘和你的表情一样，没有感情。","速度：你跑起来也没有表情变化。","防守：你防守时面无表情，对手不知道你有没有在防。","耐力：你的表情不会因为累而变化。","战术：你面无表情地执行战术，像个特工。","团队：队友不知道你是高兴还是不高兴，干脆不问了。"], vector: [4.5,4.5,4.5,4.5,4.5,3.5] },
+        { name: "🌀 混乱制造者", mainDesc: "没人知道你在干嘛，包括你自己。但偶尔你的混乱会带来意想不到的效果。你是飞盘场上的‘不确定因素’，对手怕你，因为不知道你会不会突然搞出什么离谱操作。队友也怕你，因为同样的原因。你的存在让比赛充满了‘惊喜’。", dimComments: ["你的传盘路线只有天知道。","速度：你的速度变化无常。","防守：你的防守动作让人摸不着头脑。","耐力：你的体力分配也很随机。","战术：你的战术是‘没有战术’。","团队：和你做队友需要一颗大心脏。"], vector: [4.0,5.0,4.0,4.0,3.5,3.5] },
+        { name: "👑 隐形领袖", mainDesc: "你不说话，但大家都听你的。不是因为威严，是因为你确实打得好。你低调、沉稳、关键时刻从不手软。队友信任你，因为你知道该做什么。你是场上的‘定海神针’，虽然你觉得自己只是做了该做的事。", dimComments: ["你的传盘是教科书级别的。","速度不是最快，但时机最好。","防守稳如泰山，从不失位。","耐力分配合理，永远在关键时候有力气。","战术意识顶级，总能预判对手。","团队：你是大家默认的场上指挥官。"], vector: [6.0,5.5,5.5,5.5,6.0,7.0] },
+        { name: "🔥 热血笨蛋", mainDesc: "很有激情，但技术跟不上。每次都冲得很猛，然后失误。你不尴尬，尴尬的就是队友。你的热血感染了大家，但你的失误也感染了大家——两种感染方向相反。你相信‘只要努力就能成功’，但目前来看，努力和成功之间还有点距离。", dimComments: ["你的传盘很有力量，但没准头。","速度很快，但刹不住车。","防守很拼，但经常扑空。","耐力：你的激情会让你超水平发挥体力。","战术：你的战术是‘冲就完了’。","团队：你的热情是双刃剑，能带动士气也能带崩节奏。"], vector: [3.5,6.0,4.0,5.0,3.0,6.0] },
+        { name: "🧘 佛系盘手", mainDesc: "输赢无所谓，跑不跑看心情。你来飞盘场主要是为了晒太阳、呼吸新鲜空气。队友在拼抢，你在思考‘这局打完去哪吃饭’。你的心态很好，好到队友觉得你有点过于好了。你觉得飞盘只是生活的一小部分，不值得太认真。", dimComments: ["你的传盘很随意，因为输赢无所谓。","速度：你跑不跑全看心情。","防守：你觉得防不住就算了。","耐力：你的体力都留给了思考人生。","战术：你的战术是‘开心就好’。","团队：你是团队里的‘减压阀’，有你在大家没那么紧张。"], vector: [2.8,2.8,2.8,2.8,2.8,4.5] }
     ];
 
     let userScores = [0,0,0,0,0,0];
     let answers = new Array(QUESTIONS.length).fill(null);
     let currentQuestionIdx = 0;
-    let radarChartInstance = null;
 
-    // DOM elements
+    // DOM
     const startScreen = document.getElementById('startScreen');
     const quizScreen = document.getElementById('quizScreen');
     const resultScreen = document.getElementById('resultScreen');
@@ -451,80 +328,153 @@
     const progressFill = document.getElementById('progressFill');
     const personalityNameSpan = document.getElementById('personalityName');
     const personalityDescSpan = document.getElementById('personalityDesc');
-    const cartoonContainer = document.getElementById('cartoonContainer');
+    const dimensionBreakdown = document.getElementById('dimensionBreakdown');
+    const colorChart = document.getElementById('colorChart');
     const toastMsgDiv = document.getElementById('toastMsg');
 
-    function showToast(msg) { toastMsgDiv.innerText = msg; toastMsgDiv.style.opacity = "1"; setTimeout(() => toastMsgDiv.style.opacity = "0", 1500); }
-
-    function reset() { userScores = [0,0,0,0,0,0]; answers.fill(null); currentQuestionIdx = 0; if(radarChartInstance) radarChartInstance.destroy(); }
-    function recalc() { userScores = [0,0,0,0,0,0]; for(let i=0;i<QUESTIONS.length;i++){ let o=answers[i]; if(o!==null){ let s=QUESTIONS[i].options[o].scores; for(let d=0;d<6;d++) userScores[d]+=s[d]; } } }
+    function showToast(msg) { toastMsgDiv.innerText = msg; toastMsgDiv.style.opacity = "1"; setTimeout(() => toastMsgDiv.style.opacity = "0", 2000); }
+    function reset() { userScores = [0,0,0,0,0,0]; answers.fill(null); currentQuestionIdx = 0; }
+    function recalc() { 
+        userScores = [0,0,0,0,0,0]; 
+        for(let i=0;i<QUESTIONS.length;i++){ 
+            let o=answers[i]; 
+            if(o!==null){ 
+                let s=QUESTIONS[i].options[o].scores; 
+                for(let d=0;d<6;d++) userScores[d]+=s[d]; 
+            } 
+        } 
+    }
+    
+    // 非线性映射：让分数范围从1到9，避免极端低分聚集
+    function normalizeScores(raw) {
+        return raw.map(v => 1 + (v / 90) * 8);
+    }
+    
     function matchPersonality(raw){
-        let totalMax=30*5; let norm=raw.map(v=>(v/totalMax)*10);
-        let best=0, minD=Infinity;
+        const norm = normalizeScores(raw);
+        let bestIdx = 0, minDist = Infinity;
         for(let i=0;i<PERSONALITIES.length;i++){
-            let pv=PERSONALITIES[i].vector; let d=0;
-            for(let j=0;j<6;j++) d+=(norm[j]-pv[j])**2;
-            d=Math.sqrt(d); if(d<minD){ minD=d; best=i; }
-        } return { personality:PERSONALITIES[best], normScores:norm };
+            const pv = PERSONALITIES[i].vector;
+            let dist = 0;
+            for(let j=0;j<6;j++){ const diff = norm[j] - pv[j]; dist += diff * diff; }
+            dist = Math.sqrt(dist);
+            if(dist < minDist){ minDist = dist; bestIdx = i; }
+        }
+        return { personality: PERSONALITIES[bestIdx], rawScores: raw };
     }
-    function renderRadar(norm){
-        let ctx=document.getElementById('radarChart').getContext('2d');
-        if(radarChartInstance) radarChartInstance.destroy();
-        radarChartInstance=new Chart(ctx,{ type:'radar', data:{ labels:DIM_NAMES_CN, datasets:[{ label:'大概的水平', data:norm, backgroundColor:'rgba(127,140,110,0.2)', borderColor:'#7f8c6e', borderWidth:1.5, pointBackgroundColor:'#7f8c6e', pointRadius:3 }] }, options:{ responsive:true, maintainAspectRatio:true, scales:{ r:{ beginAtZero:true, max:10, ticks:{ stepSize:2 }, grid:{ color:'#dee2d4' } } }, plugins:{ tooltip:{ callbacks:{ label:(ctx)=>`${ctx.label}: ${ctx.raw.toFixed(1)}` } } } } });
+    
+    function getColorForScore(score, maxScore=90) {
+        const ratio = Math.min(1, Math.max(0, score / maxScore));
+        const r = Math.floor(255 - ratio * 180);
+        const g = Math.floor(244 - ratio * 180);
+        const b = Math.floor(196 - ratio * 140);
+        return `rgb(${r}, ${g}, ${b})`;
     }
+    
+    function renderColorChart(rawScores) {
+        let html = '';
+        for (let i = 0; i < DIM_NAMES_CN.length; i++) {
+            const score = rawScores[i];
+            const color = getColorForScore(score, 90);
+            html += `<div class="color-card"><div class="color-swatch" style="background-color: ${color};"></div><div class="color-label">${DIM_SHORT[i]}</div><div class="color-value">${score}</div></div>`;
+        }
+        colorChart.innerHTML = html;
+    }
+    
+    function renderDimensionBreakdown(comments){
+        let html = '';
+        for(let i=0;i<DIM_NAMES_CN.length;i++){
+            html += `<div class="dimension-item"><div class="dimension-title">🔹 ${DIM_NAMES_CN[i]}</div><div class="dimension-desc">${comments[i]}</div></div>`;
+        }
+        dimensionBreakdown.innerHTML = html;
+    }
+    
+    async function generateShareImage() {
+        const personalityName = personalityNameSpan.innerText;
+        const personalityDesc = personalityDescSpan.innerText;
+        const rawScores = userScores.slice();
+        const shareContainer = document.getElementById('shareImageTemplate');
+        const shareName = document.getElementById('sharePersonalityName');
+        const shareDesc = document.getElementById('sharePersonalityDesc');
+        const shareColorContainer = document.getElementById('shareColorChart');
+        shareName.innerText = personalityName;
+        shareDesc.innerText = personalityDesc;
+        let colorHtml = '';
+        for (let i = 0; i < DIM_SHORT.length; i++) {
+            const score = rawScores[i];
+            const color = getColorForScore(score, 90);
+            colorHtml += `<div class="color-card-share"><div class="color-swatch-share" style="background-color: ${color};"></div><div style="font-size:0.8rem; font-weight:600;">${DIM_SHORT[i]}</div><div style="font-size:1.2rem; font-weight:700;">${score}</div></div>`;
+        }
+        shareColorContainer.innerHTML = colorHtml;
+        shareContainer.classList.add('visible-for-capture');
+        await new Promise(r => setTimeout(r, 100));
+        try {
+            const canvas = await html2canvas(shareContainer, { scale: 2.5, backgroundColor: '#fefcf8' });
+            shareContainer.classList.remove('visible-for-capture');
+            const link = document.createElement('a');
+            link.download = `飞盘人格_${personalityName.replace(/[^a-zA-Z0-9\u4e00-\u9fa5]/g, '')}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+            showToast("✅ 图片已生成");
+        } catch (err) {
+            shareContainer.classList.remove('visible-for-capture');
+            showToast("❌ 生成失败");
+        }
+    }
+    
     function showResult(){
-        if(answers.some(a=>a===null)){ showToast("还有题没选，随便选完再来。"); return false; }
-        recalc(); let {personality,normScores}=matchPersonality(userScores);
-        personalityNameSpan.innerText=personality.name;
-        personalityDescSpan.innerText=personality.desc;
-        cartoonContainer.innerHTML=`<pre style="font-family: monospace; margin:0;">${personality.ascii}</pre>`;
-        quizScreen.classList.add('hidden'); resultScreen.classList.remove('hidden'); startScreen.classList.add('hidden');
-        renderRadar(normScores); return true;
+        if(answers.some(a => a === null)){ showToast("还有题没选"); return false; }
+        recalc();
+        const { personality, rawScores } = matchPersonality(userScores);
+        personalityNameSpan.innerText = personality.name;
+        personalityDescSpan.innerText = personality.mainDesc;
+        renderColorChart(rawScores);
+        renderDimensionBreakdown(personality.dimComments);
+        quizScreen.classList.add('hidden');
+        resultScreen.classList.remove('hidden');
+        startScreen.classList.add('hidden');
+        return true;
     }
+    
     function renderCurrent(){
-        let q=QUESTIONS[currentQuestionIdx];
-        questionTextSpan.innerText=q.text;
-        let html='';
-        q.options.forEach((opt,idx)=>{
-            let sel=answers[currentQuestionIdx]===idx?'selected':'';
-            let icon='<i class="fas fa-minus-circle"></i>';
-            if(idx===0) icon='<i class="fas fa-leaf"></i>';
-            if(idx===1) icon='<i class="fas fa-cloud"></i>';
-            if(idx===2) icon='<i class="fas fa-water"></i>';
-            if(idx===3) icon='<i class="fas fa-moon"></i>';
-            html+=`<div class="option-item ${sel}" data-opt="${idx}">${icon}<span>${opt.text}</span></div>`;
+        const q = QUESTIONS[currentQuestionIdx];
+        questionTextSpan.innerText = q.text;
+        let html = '';
+        q.options.forEach((opt, idx) => {
+            const sel = answers[currentQuestionIdx] === idx ? 'selected' : '';
+            let icon = '<i class="fas fa-minus-circle"></i>';
+            if(idx===0) icon = '<i class="fas fa-leaf"></i>';
+            if(idx===1) icon = '<i class="fas fa-cloud"></i>';
+            if(idx===2) icon = '<i class="fas fa-water"></i>';
+            if(idx===3) icon = '<i class="fas fa-moon"></i>';
+            html += `<div class="option-item ${sel}" data-opt="${idx}">${icon}<span>${opt.text}</span></div>`;
         });
-        optionsContainer.innerHTML=html;
-        document.querySelectorAll('.option-item').forEach(el=>{ el.addEventListener('click',()=>{ let v=parseInt(el.dataset.opt); answers[currentQuestionIdx]=v; recalc(); renderCurrent(); }); });
-        let done=answers.filter(a=>a!==null).length;
-        let pct=Math.floor(done/QUESTIONS.length*100);
-        qCounterSpan.innerText=`第${currentQuestionIdx+1}/${QUESTIONS.length}题`;
-        qPercentSpan.innerText=`${pct}%`;
-        progressFill.style.width=`${pct}%`;
-        prevBtn.disabled=(currentQuestionIdx===0);
-        if(currentQuestionIdx===QUESTIONS.length-1) nextBtn.innerHTML='结果 ▶';
-        else nextBtn.innerHTML='下一题 ▶';
+        optionsContainer.innerHTML = html;
+        document.querySelectorAll('.option-item').forEach(el => { el.addEventListener('click', () => { const v = parseInt(el.dataset.opt); answers[currentQuestionIdx] = v; recalc(); renderCurrent(); }); });
+        const done = answers.filter(a => a !== null).length;
+        const pct = Math.floor((done / QUESTIONS.length) * 100);
+        qCounterSpan.innerText = `第${currentQuestionIdx+1}/${QUESTIONS.length}题`;
+        qPercentSpan.innerText = `${pct}%`;
+        progressFill.style.width = `${pct}%`;
+        prevBtn.disabled = (currentQuestionIdx === 0);
+        if(currentQuestionIdx === QUESTIONS.length-1) nextBtn.innerHTML = '结果 ▶';
+        else nextBtn.innerHTML = '下一题 ▶';
     }
+    
     function next(){
-        if(answers[currentQuestionIdx]===null){ showToast("选一个吧，反正也没什么意义。"); return; }
-        if(currentQuestionIdx===QUESTIONS.length-1){ if(answers.every(a=>a!==null)) showResult(); else showToast("还有空的。"); }
+        if(answers[currentQuestionIdx] === null){ showToast("选一个吧"); return; }
+        if(currentQuestionIdx === QUESTIONS.length-1){ if(answers.every(a => a !== null)) showResult(); else showToast("还有空的。"); }
         else{ currentQuestionIdx++; renderCurrent(); }
     }
-    function prev(){ if(currentQuestionIdx>0){ currentQuestionIdx--; renderCurrent(); } }
+    function prev(){ if(currentQuestionIdx > 0){ currentQuestionIdx--; renderCurrent(); } }
     function init(){ reset(); renderCurrent(); startScreen.classList.add('hidden'); quizScreen.classList.remove('hidden'); resultScreen.classList.add('hidden'); }
-    function retakeTest(){ reset(); init(); }
-    function shareRes(){
-        let name=personalityNameSpan.innerText;
-        let descShort=personalityDescSpan.innerText.slice(0,60);
-        let text=`【冷淡飞盘测试】我是${name}。${descShort}。随便测测，不必在意。`;
-        if(navigator.clipboard) navigator.clipboard.writeText(text).then(()=>showToast("复制了。就这样吧。")).catch(()=>showToast("复制失败，无所谓。"));
-        else{ let ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); showToast("复制了。"); }
-    }
-    startBtn.addEventListener('click',init);
-    nextBtn.addEventListener('click',next);
-    prevBtn.addEventListener('click',prev);
-    retakeBtn.addEventListener('click',retakeTest);
-    shareBtn.addEventListener('click',shareRes);
+    function backToStart(){ reset(); startScreen.classList.remove('hidden'); quizScreen.classList.add('hidden'); resultScreen.classList.add('hidden'); }
+    
+    startBtn.addEventListener('click', init);
+    nextBtn.addEventListener('click', next);
+    prevBtn.addEventListener('click', prev);
+    retakeBtn.addEventListener('click', backToStart);
+    shareBtn.addEventListener('click', generateShareImage);
 </script>
 </body>
 </html>
